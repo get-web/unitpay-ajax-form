@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         let __this = this;
         __this.classList.add('lock');
+        errorsBox.innerHTML = "";
         GWU_SendForm(__this)
             .then((result) => {
                 if (!!!result) {
@@ -59,7 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
                 window.location.href = result.redirect;
-                __this.classList.remove('lock');
+                setTimeout(() => {
+                    __this.classList.remove('lock');
+                }, 1000);
             });
 
     });
