@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./images/favicon.png">
+        <title>unitpay-ajax-form by Vitalii P. || Get-Web.site</title>
+        <link rel="stylesheet" href="./css/gw.unitpay.css">
+        <script src="./js/gw.unitpay.js"></script>
+    </head>
+
+    <body class="body">
+
+        <form action="./unitpay.php" method="post" data-unitpay="ajax-form" class="form">
+
+            <input type="hidden" name="desc" value="Purchase of in-game currency" data-unitpay="desc">
+            <input type="hidden" name="currency" value="RUB" data-unitpay="currency">
+            <input type="hidden" name="price" value="30" data-unitpay="price">
+            <input type="hidden" name="publicKey" value="000000-000000" data-unitpay="publicKey">
+
+            <h2 class="form__title">Unitpay ajax form example</h2>
+
+            <div class="form__field field field_mb">
+                <div class="field__desc">Account:</div>
+                <input type="text" class="field__input" name="account" data-unitpay="account" maxlength="25">
+            </div>
+
+            <div class="form__field field field_mb">
+                <div class="field__desc">Count:</div>
+                <input type="number" name="count" data-unitpay="count" class="field__input" min="1" max="50000"
+                    maxlength="6" value="10" autocomplete="off">
+            </div>
+
+            <div class="form__result" data-unitpay-result="container">Subtotal: <span class="form__subtotal"
+                    data-unitpay-result="subtotal"></span>
+                <span data-unitpay-result="currency"></span>
+            </div>
+
+            <div class="form__btns">
+                <button type="submit" class="form__submit">Перейти к оплате</button>
+            </div>
+
+        </form>
+
+    </body>
+
+</html>
