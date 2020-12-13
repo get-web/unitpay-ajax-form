@@ -1,3 +1,9 @@
+/* 
+name: 'unitpay-ajax-form'
+author: 'Vitalii P.'
+homepage: 'https://get-web.site/'
+*/
+
 document.addEventListener("DOMContentLoaded", function () {
 
     let emptyElement = document.createElement("div");
