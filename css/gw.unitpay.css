@@ -28,6 +28,10 @@
     z-index: 0;
 }
 
+.field_mt {
+    margin-top: 25px;
+}
+
 .field_mb {
     margin-bottom: 25px;
 }
@@ -88,11 +92,21 @@
     border-radius: 10px;
 }
 
+.form__heading {
+    margin: 0 0 30px 0;
+}
+
 .form__title {
     font-size: 18px;
-    margin: 0 0 30px 0;
     text-transform: uppercase;
     text-align: center;
+    margin: 0;
+}
+
+.form__desc {
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
 }
 
 .form__field {

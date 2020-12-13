@@ -1,6 +1,13 @@
 <?php
 
-// code by Vitalii P. || https://get-web.site
+// ================================
+// name: 'unitpay-ajax-form'
+// author: 'Vitalii P.'
+// homepage: 'https://get-web.site/'
+// ================================
+
+// задержка ответа для демонстрации
+// sleep(1);
 
 $secretKey = '00000000000000000000000000';
 $publicKey = '000000-000000';
@@ -8,34 +15,34 @@ $publicKey = '000000-000000';
 $errors = array();
 $account = '';
 $currency = 'RUB';
-$desc = 'Purchase of in-game currency';
+$desc = 'Покупка внутриигровой валюты';
 $count = '';
 $price = '';
 $sum = '';
 $signature = '';
 
 if (!isset($_POST['account']) || trim($_POST['account']) == "") {
-    array_push($errors, 'You must fill in the account field');
+    array_push($errors, 'Необходимо заполнить поле "Аккаунт"');
 }
 
 if (!isset($_POST['count']) || trim($_POST['count']) == "") {
-    array_push($errors, 'You must fill in the count field');
+    array_push($errors, 'Необходимо заполнить поле "Количество"');
 }
 
 if (!is_numeric($_POST['count'])) {
-    array_push($errors, 'The count field is not a number!');
+    array_push($errors, 'Поле "Количество" должно быть числом');
 }
 
 if (!isset($_POST['price']) || trim($_POST['price']) == "") {
-    array_push($errors, 'Unknown cost');
+    array_push($errors, 'Неудалось определить цену');
 }
 
 if (!isset($_POST['publicKey'])) {
-    array_push($errors, 'Store ID not found');
+    array_push($errors, 'Не удалось определить ID магазина');
 }
 
 if ($publicKey != $_POST['publicKey']) {
-    array_push($errors, 'The substitution of the public key');
+    array_push($errors, 'Подмена публичного ключа');
 }
 
 if (count($errors)) {
@@ -43,13 +50,10 @@ if (count($errors)) {
     exit();
 }
 
-if (isset($_POST['desc'])) {
-    $desc = $_POST['desc'];
-}
-
 
 $account = $_POST['account'];
 $currency = $_POST['currency'];
+$desc .= ' для ' . $account;
 
 $count = $_POST['count'];
 $price = $_POST['price'];
@@ -71,8 +75,8 @@ function getFormSignature($account, $currency, $desc, $sum, $secretKey)
 function generateResponse($status, $msg, $url)
 {
     return json_encode(array(
-        'status'    =>  $status,    // success/error/warning/info
-        'msg'       =>  $msg,       // if error/warning/info
+        'status'    =>  $status,    // success/error
+        'msg'       =>  $msg,       // if error
         'redirect'  =>  $url,       // if success
     ));
 }
