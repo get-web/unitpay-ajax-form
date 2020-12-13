@@ -6,4 +6,4 @@
 
 [Demo Page](http://unitpay-example.get-web.site/)
 
-![image](https://get-web.site/files/unitpay-ajax-form.gif)
+![image](https://github.com/get-web/Examples/blob/main/unitpay-ajax-form/unitpay-ajax-form.gif)
