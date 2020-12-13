@@ -63,6 +63,19 @@
     pointer-events: none;
 }
 
+/* errors-list */
+
+.errors-list {
+    margin-bottom: 40px;
+    font-size: 12px;
+    color: rgb(166, 62, 62);
+    padding: 10px;
+    box-sizing: border-box;
+    list-style-position: inside;
+    background-color: rgb(255, 212, 212);
+    border-radius: 5px;
+}
+
 /* form */
 
 .form {

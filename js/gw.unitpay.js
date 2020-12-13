@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let resultCurrency = unitpayForm.querySelector('[data-unitpay-result="currency"]') ||
         emptyElement;
 
+    let errorsBox = unitpayForm.querySelector('[data-unitpay-errors]') ||
+        emptyElement;
+
     if (!!fieldCount) {
 
         fieldCount.addEventListener('keypress', (event) => {
@@ -46,12 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
         GWU_SendForm(__this)
             .then((result) => {
                 if (!!!result) {
-                    alert('Unknown error'); // Your message handler
+                    errorsBox.innerHTML = GWU_ErrorsListMaker(['Unknown error']); // Your message handler
                     __this.classList.remove('lock');
                     return;
                 }
                 if (result.status == "error") {
-                    alert(result.msg); // Your message handler
+                    errorsBox.innerHTML = GWU_ErrorsListMaker(result.msg || ['Unknown error']); // Your message handler
                     __this.classList.remove('lock');
                     return;
                 }
@@ -81,4 +84,13 @@ function GWU_GetSubtotal(count, price) {
 
 function GWU_RoundingNum(x, n) {
     return parseFloat(Number.parseFloat(x).toFixed(n || 2));
+}
+
+function GWU_ErrorsListMaker(arr) {
+    let errorsList = '<ul class="errors-list">';
+    arr.forEach(function (error) {
+        errorsList += `<li>${error}</li>`
+    });
+    errorsList += '</ul>';
+    return errorsList;
 }

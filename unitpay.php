@@ -5,6 +5,7 @@
 $secretKey = '00000000000000000000000000';
 $publicKey = '000000-000000';
 
+$errors = array();
 $account = '';
 $currency = 'RUB';
 $desc = 'Purchase of in-game currency';
@@ -14,40 +15,37 @@ $sum = '';
 $signature = '';
 
 if (!isset($_POST['account']) || trim($_POST['account']) == "") {
-    echo generateResponse('error', 'You must fill in the account field', false);
-    exit();
+    array_push($errors, 'You must fill in the account field');
 }
 
 if (!isset($_POST['count']) || trim($_POST['count']) == "") {
-    echo generateResponse('error', 'You must fill in the count field', false);
-    exit();
+    array_push($errors, 'You must fill in the count field');
 }
 
 if (!is_numeric($_POST['count'])) {
-    echo generateResponse('error', 'The count field is not a number!', false);
-    exit();
+    array_push($errors, 'The count field is not a number!');
 }
 
 if (!isset($_POST['price']) || trim($_POST['price']) == "") {
-    echo generateResponse('error', 'Unknown cost', false);
-    exit();
+    array_push($errors, 'Unknown cost');
 }
 
 if (!isset($_POST['publicKey'])) {
-    echo generateResponse('error', 'Store ID not found', false);
-    exit();
+    array_push($errors, 'Store ID not found');
 }
 
 if ($publicKey != $_POST['publicKey']) {
-    echo generateResponse('error', 'The substitution of the public key', false);
+    array_push($errors, 'The substitution of the public key');
+}
+
+if (count($errors)) {
+    echo generateResponse('error', $errors, false);
     exit();
 }
 
 if (isset($_POST['desc'])) {
     $desc = $_POST['desc'];
 }
-
-
 
 
 $account = $_POST['account'];
