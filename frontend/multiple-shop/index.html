@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru" class="html">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Vitalii P. | get-web.site" />
+        <link rel="icon" type="image/png" href="./images/favicon.png">
+        <title>Unitpay ajax form</title>
+        <link rel="stylesheet" href="./css/gw.unitpay.css">
+        <script src="./js/gw.unitpay.js"></script>
+    </head>
+
+    <body class="body">
+
+        <form action="./gw.unitpay.php" method="post" data-unitpay="ajax-form" class="form">
+
+            <input type="hidden" name="currency" value="RUB" data-unitpay="currency">
+            <input type="hidden" name="price" value="" data-unitpay="price">
+
+            <div class="form__heading">
+                <h2 class="form__title">Unitpay ajax form</h2>
+                <p class="form__desc">С генерацией подписи </p>
+            </div>
+
+            <div data-unitpay-errors></div>
+
+            <div class="form__field field field_mb field_mt">
+                <div class="field__desc">Сервер:</div>
+                <select name="publicKey" data-unitpay="publicKey" class="field__input">
+                    <option value="000000-00000" data-unitpay-price="10">Сервер 1</option>
+                    <option value="111111-11111" data-unitpay-price="20">Сервер 2</option>
+                    <option value="222222-22222" data-unitpay-price="30">Сервер 3</option>
+                </select>
+            </div>
+
+            <div class="form__field field field_mb field_mt">
+                <div class="field__desc">Аккаунт:</div>
+                <input type="text" class="field__input" name="account" data-unitpay="account" maxlength="25">
+            </div>
+
+            <div class="form__field field field_mb">
+                <div class="field__desc">Количество:</div>
+                <input type="number" name="count" data-unitpay="count" class="field__input" min="1" max="50000" maxlength="6" value="10" autocomplete="off">
+            </div>
+
+            <div class="form__result" data-unitpay-result="container">Итого: <span class="form__subtotal" data-unitpay-result="subtotal"></span>
+                <span data-unitpay-result="currency"></span>
+            </div>
+
+            <div class="form__btns">
+                <button type="submit" class="form__submit">Перейти к оплате</button>
+            </div>
+
+        </form>
+
+    </body>
+
+</html>
